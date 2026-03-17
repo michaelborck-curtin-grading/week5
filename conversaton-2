@@ -1,0 +1,25 @@
+Conversation title
+I need to create an accessible contact form. It needs fields name, email and a message.  Proper Labels for Every Input Field , Robust Keyboard Navigation and Clear Focus Indicators, and Accessible and Descriptive Error Handling
+Making an accessible contact form is super important! Here's a breakdown of how you can tackle each of those points:
+
+Proper Labels for Every Input Field:
+Always use the <label> element and make sure its for attribute matches the id of the input field. This way, clicking the label also focuses the input, and screen readers will announce the label along with the input.
+Example: <label for="name">Your Name:</label><input type="text" id="name" name="name">
+Robust Keyboard Navigation and Clear Focus Indicators:
+This is mostly handled by default HTML elements (like <input>, <textarea>, <button>) as browsers naturally add them to the tab order.
+To ensure robust navigation: Avoid using tabindex="-1" on interactive elements unless you have a specific, advanced accessibility pattern in mind that requires it. Elements with tabindex="0" can be used to add non-naturally focusable elements to the tab order, but it's often better to stick with semantic HTML.
+Clear Focus Indicators: Browsers usually provide a default outline when an element is focused. Don't remove these outlines (outline: none; in CSS) without providing an equally clear, custom focus indicator. You can style them to match your design, for example: input:focus, textarea:focus, button:focus { outline: 2px solid blue; outline-offset: 2px; }
+Accessible and Descriptive Error Handling:
+When a validation error occurs, make sure the error message is clearly associated with the input field it relates to.
+Use aria-describedby to link the input field to its error message. The error message should also be visible and clearly explain what went wrong and how to fix it.
+Set aria-invalid="true" on the input field when it has an error.
+Consider putting a summary of all errors at the top of the form for users who might miss individual field errors.
+Example:
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" aria-invalid="true" aria-describedby="email-error">
+        <span id="email-error" class="error-message">Please enter a valid email address.</span>
+3 lines (3 loc) · 241 B
+
+Implementing these practices will make your contact form much more user-friendly for everyone! Let me know if you want to dive deeper into any of these, or need a full example!
+
+Ask a follow-up...
